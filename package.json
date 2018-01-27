@@ -1,5 +1,7 @@
 {
   "name": "overfriendly",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "primer": "^10.3.0"
+  }
 }
