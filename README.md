@@ -1,24 +1,17 @@
-# README
+# Overfriendly
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## How to Develop
 
-Things you may want to cover:
+[Create a Battle.net API app](https://dev.battle.net), `cp dotenv.sample .env`, and
+copy your Battle.net app key and secret into the .env file as `BNET_APP_ID`
+and `BNET_APP_SECRET`.
 
-* Ruby version
+You will also need to use a service like [ngrok](https://ngrok.com/) to have a public URL
+that will hit your local server. Start ngrok via `ngrok http 3000`;
+look at the https URL it spits out. In your Battle.net app, set
+`https://your-ngrok-id-here.ngrok.io/users/auth/bnet/callback` as
+the "Register Callback URL" value. Update .env so that `BNET_APP_HOST`
+is set to your `your-ngrok-id-here.ngrok.io`.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Start the Rails server via `bundle exec rails s`. Now you should be able to go to
+`https://your-ngrok-id-here.ngrok.io/` and sign in via Battle.net.
