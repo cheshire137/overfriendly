@@ -4,6 +4,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :battletag, null: false
       t.string :provider, null: false
       t.string :uid, null: false
+      t.string :platform, limit: 3
+      t.string :region, limit: 6
       t.timestamps null: false
     end
 

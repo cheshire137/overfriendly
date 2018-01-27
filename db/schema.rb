@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20180127204637) do
     t.string "battletag", null: false
     t.string "provider", null: false
     t.string "uid", null: false
+    t.string "platform", limit: 3
+    t.string "region", limit: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["battletag"], name: "index_users_on_battletag", unique: true

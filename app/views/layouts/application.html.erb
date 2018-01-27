@@ -10,12 +10,14 @@
   </head>
   <body>
     <% if alert.present? %>
-      <p><%= alert %></p>
+      <p class="p-3 m-4 rounded-2 flash-error"><%= alert %></p>
     <% end %>
     <% if notice.present? %>
-      <p><%= notice %></p>
+      <p class="p-3 m-4 rounded-2 flash-success"><%= notice %></p>
     <% end %>
-    <%= yield %>
+    <div class="container my-4">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>

@@ -1,11 +1,7 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, only: [:user]
-  before_action :redirect_if_signed_in, only: [:index]
+  before_action :redirect_if_signed_in
 
   def index
-  end
-
-  def user
   end
 
   private

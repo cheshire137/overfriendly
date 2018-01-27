@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  get '/user/:battletag' => 'home#user', as: :user
+  get '/user/:battletag' => 'user#show', as: :user
+  put '/user/:battletag' => 'user#update'
 
   root to: 'home#index'
 end
