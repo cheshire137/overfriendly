@@ -53,3 +53,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.4.1'
 gem 'omniauth-oauth2', '~> 1.5.0'
 gem 'omniauth-bnet', '~> 1.1.1'
+gem 'httparty', '~> 0.15.6'
+gem 'webpacker', '~> 3.2.1'

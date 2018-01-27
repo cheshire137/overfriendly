@@ -2,6 +2,11 @@
   "name": "overfriendly",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "^3.2.1",
+    "delegated-events": "^1.0.5",
     "primer": "^10.3.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.11.1"
   }
 }
