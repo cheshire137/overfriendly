@@ -4,5 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  get '/user/:battletag' => 'home#user', as: :user
+
   root to: 'home#index'
 end

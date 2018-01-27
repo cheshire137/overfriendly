@@ -3,6 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth = request.env['omniauth.auth']
     user = User.where(provider: auth.provider, uid: auth.uid).first_or_initialize
     user.battletag = auth.info.battletag
+
     if user.save
       sign_in_and_redirect(user, event: :authentication)
     else
