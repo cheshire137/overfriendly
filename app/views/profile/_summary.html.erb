@@ -9,9 +9,7 @@
       Unranked
     <% end %>
   </span>
-  <span class="d-inline-block ml-2">
-    <%= stats.tldr %>
-  </span>
+  <span class="d-inline-block ml-2"><%= stats.tldr %></span>
 </div>
 
 <%= render partial: 'profile/stats', locals: { stats: stats, limit: 3 } %>
