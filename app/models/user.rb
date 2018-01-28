@@ -23,6 +23,10 @@ class User < ApplicationRecord
   has_and_belongs_to_many :friends, class_name: 'User', join_table: 'friends',
     foreign_key: 'user1_id', association_foreign_key: 'user2_id'
 
+  alias_attribute :to_s, :battletag
+
+  scope :order_by_battletag, ->{ order("LOWER(battletag)") }
+
   def self.battletag_from_param(str)
     index = str.rindex('-')
     start = str[0...index]

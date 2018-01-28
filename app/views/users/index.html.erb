@@ -1,0 +1,11 @@
+<h1 class="h1 mb-4">Overfriendly / Players</h1>
+
+<%= render partial: 'layouts/nav', locals: { battletag: current_user.battletag } %>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <a href="<%= user_path(user, user.platform, user.region) %>"><%= user %></a>
+    </li>
+  <% end %>
+</ul>
