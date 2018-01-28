@@ -30,6 +30,11 @@ class User < ApplicationRecord
 
   scope :order_by_battletag, ->{ order("LOWER(battletag)") }
 
+  def grant_api_access
+    self.api_token = Devise.friendly_token[0,20]
+    save
+  end
+
   def self.battletag_from_param(str)
     index = str.rindex('-')
     start = str[0...index]
