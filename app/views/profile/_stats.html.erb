@@ -1,6 +1,8 @@
 <% limit = local_assigns.key?(:limit) ? local_assigns[:limit] : 5 %>
 
-<h4 class="h4 text-center mb-2"><%= stats.tldr %></h4>
+<% unless local_assigns[:hide_tldr] %>
+  <h4 class="h4 text-center mb-2"><%= stats.tldr %></h4>
+<% end %>
 
 <% if stats.competitive_heroes.any? %>
   <%= render partial: 'users/heroes_list',
