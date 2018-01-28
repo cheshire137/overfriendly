@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   put '/user' => 'users#update', as: :user_update
   get '/settings' => 'users#settings', as: :settings
 
+  get '/team/:slug' => 'teams#show', as: :team
+
   scope defaults: { format: :json }, path: '/api' do
     post '/teams' => 'api/teams#create'
   end
