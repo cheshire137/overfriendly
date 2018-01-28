@@ -24,9 +24,7 @@ class ProfileController < ApplicationController
 
   def get_profile
     cache_key = "profile-data/#{params[:battletag]}/#{params[:region]}/#{params[:platform]}"
-    data = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
-      overwatch_api.profile
-    end
+    data = Rails.cache.fetch(cache_key, expires_in: 1.week) { overwatch_api.profile }
     return unless data
 
     Profile.new(data)
@@ -34,9 +32,7 @@ class ProfileController < ApplicationController
 
   def get_stats
     cache_key = "stats-data/#{params[:battletag]}/#{params[:region]}/#{params[:platform]}"
-    data = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
-      overwatch_api.stats
-    end
+    data = Rails.cache.fetch(cache_key, expires_in: 1.week) { overwatch_api.stats }
     return unless data
 
     Stats.new(data)
