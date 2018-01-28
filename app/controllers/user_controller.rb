@@ -25,10 +25,6 @@ class UserController < ApplicationController
 
   private
 
-  def ensure_user_complete
-    redirect_to settings_path unless current_user.complete?
-  end
-
   def user_params
     params.require(:user).permit(:region, :platform)
   end

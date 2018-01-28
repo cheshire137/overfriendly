@@ -4,7 +4,7 @@
   <%= render partial: 'layouts/nav', locals: { battletag: current_user.battletag } %>
 <% end %>
 
-<%= form_for(user_update_path, method: :put) do |f| %>
+<%= form_for(current_user, url: user_update_path, method: :put) do |f| %>
   <dl class="form-group">
     <dt><%= f.label :platform, 'Platform:' %></dt>
     <dd><%= f.select :platform, options_for_select(platform_options, current_user.platform), {}, { class: 'form-select' } %></dd>
