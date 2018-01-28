@@ -15,3 +15,21 @@ as "Web Site". Update .env so that `BNET_APP_HOST` is set to your `your-ngrok-id
 
 Start the Rails server via `bundle exec rails s`. Now you should be able to go to
 `https://your-ngrok-id-here.ngrok.io/` and sign in via Battle.net.
+
+## How to Deploy to Heroku
+
+Create an [app on Heroku](https://dashboard.heroku.com/new-app).
+
+Create a [Battle.net app](https://dev.battle.net) and set its "Register Callback URL" to
+`https://your-heroku-app.herokuapp.com/users/auth/bnet/callback`. Set
+`https://your-heroku-app.herokuapp.com` as the "Web Site".
+
+```bash
+heroku git:remote -a your-heroku-app
+heroku config:set BNET_APP_ID=your_app_id_here
+heroku config:set BNET_APP_SECRET=your_app_secret_here
+heroku config:set BNET_APP_HOST=your-heroku-app.herokuapp.com
+git push heroku master
+heroku run rake db:migrate
+heroku open
+```
