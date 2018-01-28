@@ -30,7 +30,7 @@ class Hero
   end
 
   def to_param
-    @to_param ||= I18n.transliterate(name.gsub(/\./, '')).downcase.gsub(/\s:/, '-')
+    @to_param ||= I18n.transliterate(name.gsub(/[\.:]/, '')).downcase.gsub(/\s/, '-')
   end
 
   def to_s
