@@ -3,3 +3,8 @@
 <div class="js-tab-container">
   <%= render partial: 'layouts/nav' %>
 </div>
+
+<% if @friends.any? %>
+<% else %>
+  <p>No friends :'(</p>
+<% end %>

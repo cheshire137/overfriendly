@@ -4,11 +4,11 @@ class Profile
               :quickplay_wins, :sr, :rank_url, :level_url
 
   def initialize(data)
-    @star_url = data['star']
-    @star_url += 'png' if @star_url.ends_with?('.')
+    @star_url = data['star'].presence
+    @star_url += 'png' if @star_url && @star_url.ends_with?('.')
 
-    @portrait_url = data['portrait']
-    @portrait_url += 'png' if @portrait_url.ends_with?('.')
+    @portrait_url = data['portrait'].presence
+    @portrait_url += 'png' if @portrait_url && @portrait_url.ends_with?('.')
 
     if playtime = data['playtime']
       @quickplay_time = playtime['quickplay']
@@ -16,8 +16,8 @@ class Profile
     end
 
     @level = data['level']
-    @level_url = data['levelFrame']
-    @level_url += 'png' if @level_url.ends_with?('.')
+    @level_url = data['levelFrame'].presence
+    @level_url += 'png' if @level_url && @level_url.ends_with?('.')
 
     if competitive = data['competitive']
       @sr = competitive['rank']

@@ -23,6 +23,17 @@ class User < ApplicationRecord
   has_and_belongs_to_many :friends, class_name: 'User', join_table: 'friends',
     foreign_key: 'user1_id', association_foreign_key: 'user2_id'
 
+  def self.battletag_from_param(str)
+    index = str.rindex('-')
+    start = str[0...index]
+    rest = str[index+1...str.size]
+    "#{start}##{rest}"
+  end
+
+  def self.parameterize(battletag)
+    battletag.split('#').join('-')
+  end
+
   def complete?
     platform.present? && region.present?
   end
@@ -32,6 +43,6 @@ class User < ApplicationRecord
   end
 
   def to_param
-    battletag.split('#').join('-')
+    self.class.parameterize(battletag)
   end
 end

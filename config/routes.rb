@@ -4,11 +4,13 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  get '/profile' => 'user#profile', as: :profile
-  get '/stats' => 'user#stats', as: :stats
-  get '/friends/:battletag' => 'friends#index', as: :friends
-  get '/user/:battletag' => 'user#show', as: :user
-  put '/user/:battletag' => 'user#update'
+  get '/profile/:battletag/:platform/:region' => 'profile#show', as: :profile
+  get '/stats/:battletag/:platform/:region' => 'profile#stats', as: :stats
+
+  get '/friends/:battletag/:platform/:region' => 'friends#index', as: :friends
+
+  get '/user/:battletag/:platform/:region' => 'user#show', as: :user
+  put '/user' => 'user#update', as: :user_update
   get '/settings' => 'user#settings', as: :settings
 
   root to: 'home#index'

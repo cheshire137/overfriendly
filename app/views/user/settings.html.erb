@@ -1,8 +1,10 @@
 <h1 class="h1 mb-4">Overfriendly / <%= current_user.battletag %> / Settings</h1>
 
-<%= render partial: 'layouts/nav' %>
+<% if current_user.complete? %>
+  <%= render partial: 'layouts/nav' %>
+<% end %>
 
-<%= form_for(current_user, method: :put) do |f| %>
+<%= form_for(user_update_path, method: :put) do |f| %>
   <dl class="form-group">
     <dt><%= f.label :platform, 'Platform:' %></dt>
     <dd><%= f.select :platform, options_for_select(platform_options, current_user.platform), {}, { class: 'form-select' } %></dd>

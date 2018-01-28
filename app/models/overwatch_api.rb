@@ -2,17 +2,19 @@ class OverwatchApi
   include HTTParty
   base_uri 'ow-api.herokuapp.com'
 
-  def initialize(user)
-    @user = user
+  def initialize(battletag:, region:, platform:)
+    @battletag = battletag
+    @region = region
+    @platform = platform
   end
 
   def profile
-    resp = self.class.get("/profile/#{@user.platform}/#{@user.region}/#{@user.to_param}")
+    resp = self.class.get("/profile/#{@platform}/#{@region}/#{@battletag}")
     resp.parsed_response if resp.success?
   end
 
   def stats
-    resp = self.class.get("/stats/#{@user.platform}/#{@user.region}/#{@user.to_param}")
+    resp = self.class.get("/stats/#{@platform}/#{@region}/#{@battletag}")
     resp.parsed_response if resp.success?
   end
 end

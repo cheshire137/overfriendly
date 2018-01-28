@@ -1,10 +1,8 @@
-<h1 class="h1 mb-4">Overfriendly / <%= current_user.battletag %></h1>
+<h1 class="h1 mb-4">Overfriendly / <%= @battletag %></h1>
 
 <%= render partial: 'layouts/nav' %>
 
 <div class="d-flex flex-items-center">
-  <div data-url="<%= profile_path %>" class="mr-4 <%= "js-remote-load" if current_user.complete? %>">
-  </div>
-  <div data-url="<%= stats_path %>" class="<%= "js-remote-load" if current_user.complete? %>">
-  </div>
+  <div data-url="<%= profile_path(User.parameterize(@battletag), @platform, @region) %>" class="mr-4 js-remote-load"></div>
+  <div data-url="<%= stats_path(User.parameterize(@battletag), @platform, @region) %>" class="js-remote-load"></div>
 </div>
