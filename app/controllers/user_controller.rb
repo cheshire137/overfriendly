@@ -16,11 +16,11 @@ class UserController < ApplicationController
 
     if current_user.save
       flash[:notice] = 'Updated your platform and region.'
+      redirect_to user_path(current_user, current_user.platform, current_user.region)
     else
       flash[:alert] = "Couldn't update: #{current_user.errors.full_messages.join(', ')}"
+      redirect_to settings_path
     end
-
-    redirect_to user_path(current_user, current_user.platform, current_user.region)
   end
 
   private
