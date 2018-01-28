@@ -4,11 +4,13 @@
 
 <div class="columns">
   <% @users.each do |user| %>
-    <div class="column">
-      <h3 class="h3 text-center"><a href="<%= user_path(user, user.platform, user.region) %>">
-        <%= user %>
-      </a></h3>
-      <div data-url="<%= summary_path(User.parameterize(user.battletag), user.platform, user.region) %>" class="mr-4 js-remote-load"></div>
+    <div class="column one-half">
+      <h3 class="h3 text-center">
+        <a href="<%= user_path(user, user.platform, user.region) %>">
+          <%= user %>
+        </a>
+      </h3>
+      <div data-url="<%= summary_path(User.parameterize(user.battletag), user.platform, user.region) %>" class="js-remote-load player-summary border rounded-2 mt-2 mb-4 p-3"></div>
     </div>
   <% end %>
 </div>
