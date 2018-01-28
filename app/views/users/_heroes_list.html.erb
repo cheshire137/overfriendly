@@ -5,7 +5,7 @@
     <% end %>
     <span class="d-inline-block hero-name text-bold mr-2"><%= hero %></span>
     <span class="hero-bar-container d-inline-block">
-      <span class="hero-bar hero-bar-<%= hero.to_param %> d-inline-block rounded-2" style="width: <%= hero_bar_width(hero.seconds_played, total_seconds) %>%"></span>
+      <span class="hero-bar hero-bar-<%= hero.to_param %> d-inline-block rounded-2" style="width: <%= hero_bar_width(hero.seconds_played, max_seconds, total_seconds) %>%"></span>
     </span>
   </div>
 <% end %>
