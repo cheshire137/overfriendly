@@ -20,6 +20,9 @@ class User < ApplicationRecord
   validates :platform, inclusion: { in: VALID_PLATFORMS.keys }, allow_nil: true
   validates :region, inclusion: { in: VALID_REGIONS.keys }, allow_nil: true
 
+  has_and_belongs_to_many :friends, class_name: 'User', join_table: 'friends',
+    foreign_key: 'user1_id', association_foreign_key: 'user2_id'
+
   def complete?
     platform.present? && region.present?
   end
