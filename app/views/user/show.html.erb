@@ -1,13 +1,29 @@
 <h1 class="h1 mb-4">Overfriendly: <%= current_user.battletag %></h1>
 
-<%= form_for(current_user, method: :put) do |f| %>
-  <dl class="form-group">
-    <dt><%= f.label :platform, 'Platform:' %></dt>
-    <dd><%= f.select :platform, options_for_select(platform_options, current_user.platform), {}, { class: 'form-select' } %></dd>
-  </dl>
-  <dl class="form-group">
-    <dt><%= f.label :region, 'Region:' %></dt>
-    <dd><%= f.select :region, options_for_select(region_options, current_user.region), {}, { class: 'form-select' } %></dd>
-  </dl>
-  <button type="submit" class="btn">Save</button>
-<% end %>
+<div class="js-tab-container">
+  <div class="tabnav">
+    <nav class="tabnav-tabs">
+      <% if current_user.complete? %>
+        <a href="#user-details" class="tabnav-tab js-tab selected">Details</a>
+      <% end %>
+      <a href="#user-form" class="tabnav-tab js-tab">Platform/Region</a>
+    </nav>
+  </div>
+
+  <div id="user-details" data-url="<%= profile_path %>" class="js-tab-contents <% if current_user.complete? %>js-remote-load<% else %>d-none<% end %>">
+  </div>
+
+  <div id="user-form" class="js-tab-contents <%= "d-none" if current_user.complete? %>">
+    <%= form_for(current_user, method: :put) do |f| %>
+      <dl class="form-group">
+        <dt><%= f.label :platform, 'Platform:' %></dt>
+        <dd><%= f.select :platform, options_for_select(platform_options, current_user.platform), {}, { class: 'form-select' } %></dd>
+      </dl>
+      <dl class="form-group">
+        <dt><%= f.label :region, 'Region:' %></dt>
+        <dd><%= f.select :region, options_for_select(region_options, current_user.region), {}, { class: 'form-select' } %></dd>
+      </dl>
+      <button type="submit" class="btn">Save</button>
+    <% end %>
+  </div>
+</div>

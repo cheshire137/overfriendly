@@ -20,6 +20,14 @@ class User < ApplicationRecord
   validates :platform, inclusion: { in: VALID_PLATFORMS.keys }, allow_nil: true
   validates :region, inclusion: { in: VALID_REGIONS.keys }, allow_nil: true
 
+  def complete?
+    platform.present? && region.present?
+  end
+
+  def overwatch_api
+    OverwatchApi.new(self)
+  end
+
   def to_param
     battletag.split('#').join('-')
   end

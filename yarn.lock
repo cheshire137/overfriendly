@@ -5251,6 +5251,10 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
 
+selector-observer@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/selector-observer/-/selector-observer-1.1.0.tgz#06849d1f879222ce63fc6adbc7de0bab0a8703b5"
+
 selector-set@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.2.tgz#17a09a8723e7610f57997e531f15a028655f742f"
@@ -6132,6 +6136,10 @@ websocket-driver@>=0.5.1:
 websocket-extensions@>=0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
+
+whatwg-fetch@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
 whet.extend@~0.9.9:
   version "0.9.9"

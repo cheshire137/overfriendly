@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  get '/profile' => 'user#profile', as: :profile
+
   get '/user/:battletag' => 'user#show', as: :user
   put '/user/:battletag' => 'user#update'
 
