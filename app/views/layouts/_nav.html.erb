@@ -1,0 +1,9 @@
+<div class="tabnav">
+  <nav class="tabnav-tabs">
+    <% if current_user.complete? %>
+      <a href="<%= user_path(current_user) %>" class="tabnav-tab <%= "selected" if profile_tab_active? %>">Profile</a>
+    <% end %>
+    <a href="<%= friends_path(current_user) %>" class="tabnav-tab <%= "selected" if friends_tab_active? %>">Friends</a>
+    <a href="<%= settings_path %>" class="tabnav-tab <%= "selected" if settings_tab_active? %>">Settings</a>
+  </nav>
+</div>

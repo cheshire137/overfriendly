@@ -1,33 +1,10 @@
 <h1 class="h1 mb-4">Overfriendly: <%= current_user.battletag %></h1>
 
-<div class="js-tab-container">
-  <div class="tabnav">
-    <nav class="tabnav-tabs">
-      <% if current_user.complete? %>
-        <a href="#user-details" class="tabnav-tab js-tab selected">Profile</a>
-      <% end %>
-      <a href="#user-form" class="tabnav-tab js-tab">Settings</a>
-    </nav>
-  </div>
+<%= render partial: 'layouts/nav' %>
 
-  <div id="user-details" class="d-flex flex-items-center js-tab-contents <% unless current_user.complete? %>d-none<% end %>">
-    <div data-url="<%= profile_path %>" class="mr-4 <%= "js-remote-load" if current_user.complete? %>">
-    </div>
-    <div data-url="<%= stats_path %>" class="<%= "js-remote-load" if current_user.complete? %>">
-    </div>
+<div class="d-flex flex-items-center">
+  <div data-url="<%= profile_path %>" class="mr-4 <%= "js-remote-load" if current_user.complete? %>">
   </div>
-
-  <div id="user-form" class="js-tab-contents <%= "d-none" if current_user.complete? %>">
-    <%= form_for(current_user, method: :put) do |f| %>
-      <dl class="form-group">
-        <dt><%= f.label :platform, 'Platform:' %></dt>
-        <dd><%= f.select :platform, options_for_select(platform_options, current_user.platform), {}, { class: 'form-select' } %></dd>
-      </dl>
-      <dl class="form-group">
-        <dt><%= f.label :region, 'Region:' %></dt>
-        <dd><%= f.select :region, options_for_select(region_options, current_user.region), {}, { class: 'form-select' } %></dd>
-      </dl>
-      <button type="submit" class="btn">Save</button>
-    <% end %>
+  <div data-url="<%= stats_path %>" class="<%= "js-remote-load" if current_user.complete? %>">
   </div>
 </div>

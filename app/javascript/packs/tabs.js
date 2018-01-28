@@ -1,9 +1,13 @@
 import {on} from 'delegated-events'
 
 on('click', '.js-tab', function(event) {
-  event.preventDefault()
   const link = event.target
   const selector = link.getAttribute('href')
+  if (selector.indexOf('#') !== 0) {
+    return
+  }
+
+  event.preventDefault()
   const tabContent = document.querySelector(selector)
   const container = link.closest('.js-tab-container')
 

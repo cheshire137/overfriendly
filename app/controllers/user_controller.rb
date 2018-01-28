@@ -1,7 +1,11 @@
 class UserController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_user_complete, only: [:show]
 
   def show
+  end
+
+  def settings
   end
 
   def profile
@@ -31,6 +35,10 @@ class UserController < ApplicationController
   end
 
   private
+
+  def ensure_user_complete
+    redirect_to settings_path unless current_user.complete?
+  end
 
   def get_profile
     data = Rails.cache.fetch("profile-data/#{current_user.to_param}", expires_in: 1.hour) do
