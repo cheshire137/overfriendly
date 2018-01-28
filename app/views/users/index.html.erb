@@ -2,10 +2,14 @@
 
 <%= render partial: 'layouts/nav', locals: { battletag: current_user.battletag } %>
 
-<ul>
+<ul class="list-style-none">
   <% @users.each do |user| %>
     <li>
-      <a href="<%= user_path(user, user.platform, user.region) %>"><%= user %></a>
+      <%= render partial: 'profile/summary', locals: {
+            battletag: user.battletag, platform: user.platform, region: user.region
+          } %>
     </li>
   <% end %>
 </ul>
+
+<%= will_paginate @users %>
