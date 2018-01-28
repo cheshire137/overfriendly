@@ -42,4 +42,26 @@ class Stats
       end
     end
   end
+
+  def top_heroes
+    heroes = if competitive_heroes.any?
+      competitive_heroes
+    else
+      quickplay_heroes
+    end
+    heroes[0...3]
+  end
+
+  def tldr
+    roles = top_heroes.map(&:role)
+    role_counts = {}
+
+    roles.each do |role|
+      role_counts[role] ||= 0
+      role_counts[role] += 1
+    end
+
+    role_counts = role_counts.sort_by { |role, count| -count }.to_h
+    role_counts.keys.map { |role| Hero.humanize_role(role) }.join(' / ')
+  end
 end

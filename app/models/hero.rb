@@ -29,6 +29,47 @@ class Hero
     end
   end
 
+  def self.humanize_role(role)
+    if role == :dps
+      'DPS'
+    elsif role == :off_tank
+      'Off-tank'
+    else
+      role.to_s.humanize
+    end
+  end
+
+  def role
+    case to_param
+    when 'mercy'      then :healer
+    when 'zenyatta'   then :healer
+    when 'ana'        then :healer
+    when 'symmetra'   then :defense
+    when 'mei'        then :defense
+    when 'soldier-76' then :hitscan
+    when 'widowmaker' then :hitscan
+    when 'hanzo'      then :defense
+    when 'mccree'     then :hitscan
+    when 'pharah'     then :dps
+    when 'doomfist'   then :dps
+    when 'tracer'     then :flanker
+    when 'lucio'      then :healer
+    when 'moira'      then :healer
+    when 'winston'    then :tank
+    when 'dva'        then :off_tank
+    when 'torbjorn'   then :defense
+    when 'bastion'    then :defense
+    when 'junkrat'    then :dps
+    when 'reaper'     then :dps
+    when 'sombra'     then :dps
+    when 'genji'      then :flanker
+    when 'zarya'      then :off_tank
+    when 'roadhog'    then :off_tank
+    when 'orisa'      then :tank
+    when 'reinhardt'  then :tank
+    end
+  end
+
   def to_param
     @to_param ||= I18n.transliterate(name.gsub(/[\.:]/, '')).downcase.gsub(/\s/, '-')
   end
