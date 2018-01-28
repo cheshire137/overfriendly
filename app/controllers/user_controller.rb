@@ -11,6 +11,13 @@ class UserController < ApplicationController
     render partial: 'user/profile', layout: false, locals: { profile: profile }
   end
 
+  def stats
+    stats = get_stats
+    return head(:failed_dependency) unless stats
+
+    render partial: 'user/stats', layout: false, locals: { stats: stats }
+  end
+
   def update
     current_user.assign_attributes(user_params)
 
@@ -33,6 +40,16 @@ class UserController < ApplicationController
     return unless data
 
     Profile.new(data)
+  end
+
+  def get_stats
+    data = Rails.cache.fetch("stats-data/#{current_user.to_param}", expires_in: 1.hour) do
+      api = current_user.overwatch_api
+      api.stats
+    end
+    return unless data
+
+    Stats.new(data)
   end
 
   def user_params

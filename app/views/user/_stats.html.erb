@@ -1,0 +1,11 @@
+<% if stats.competitive_heroes.any? %>
+  <% stats.competitive_heroes.each do |hero| %>
+    <div class="d-flex flex-items-center mb-1">
+      <% if hero.url %>
+        <img class="rounded-2 d-inline-block mr-2 hero-portrait" width="30" height="30" src="<%= hero.url %>" alt="<%= hero %>">
+      <% end %>
+      <span class="d-inline-block text-bold mr-2"><%= hero %></span>
+      <span><%= hero.playtime %></span>
+    </div>
+  <% end %>
+<% end %>

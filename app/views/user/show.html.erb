@@ -10,7 +10,11 @@
     </nav>
   </div>
 
-  <div id="user-details" data-url="<%= profile_path %>" class="js-tab-contents <% if current_user.complete? %>js-remote-load<% else %>d-none<% end %>">
+  <div id="user-details" class="d-flex flex-items-center js-tab-contents <% unless current_user.complete? %>d-none<% end %>">
+    <div data-url="<%= profile_path %>" class="mr-4 <%= "js-remote-load" if current_user.complete? %>">
+    </div>
+    <div data-url="<%= stats_path %>" class="<%= "js-remote-load" if current_user.complete? %>">
+    </div>
   </div>
 
   <div id="user-form" class="js-tab-contents <%= "d-none" if current_user.complete? %>">

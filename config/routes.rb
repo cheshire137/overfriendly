@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
 
   get '/profile' => 'user#profile', as: :profile
+  get '/stats' => 'user#stats', as: :stats
 
   get '/user/:battletag' => 'user#show', as: :user
   put '/user/:battletag' => 'user#update'
