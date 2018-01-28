@@ -2,15 +2,15 @@
 
 <%= render partial: 'layouts/nav', locals: { battletag: current_user.battletag } %>
 
-<ul class="list-style-none">
+<div class="columns">
   <% @users.each do |user| %>
-    <li class="mb-4">
-      <h3 class="h3"><a href="<%= user_path(user, user.platform, user.region) %>">
+    <div class="column">
+      <h3 class="h3 text-center"><a href="<%= user_path(user, user.platform, user.region) %>">
         <%= user %>
       </a></h3>
       <div data-url="<%= summary_path(User.parameterize(user.battletag), user.platform, user.region) %>" class="mr-4 js-remote-load"></div>
-    </li>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <%= will_paginate @users %>
