@@ -1,6 +1,7 @@
 <h1 class="h1 mb-4">Overfriendly / <%= @battletag %></h1>
 
-<%= render partial: 'layouts/nav' %>
+<%= render partial: 'layouts/nav',
+           locals: { battletag: @battletag, region: @region, platform: @platform } %>
 
 <div class="d-flex flex-items-center">
   <div data-url="<%= profile_path(User.parameterize(@battletag), @platform, @region) %>" class="mr-4 js-remote-load"></div>
