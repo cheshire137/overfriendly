@@ -1,3 +1,51 @@
-<% if profile.star_url %>
-  <img src="<%= profile.star_url %>" alt="Level <%= profile.level %>">
-<% end %>
+<div class="d-flex mb-4">
+  <% if profile.level %>
+    <div class="text-center level-container mr-4">
+      <span class="text-bold">Level <%= number_with_delimiter profile.level %></span>
+      <div class="d-flex flex-items-center">
+        <div class="position-relative level-star-container">
+          <% if profile.level_url %>
+            <img class="d-inline-block level-image flex-shrink-0" width="100" height="100" src="<%= profile.level_url %>" alt="Level <%= profile.level %>">
+          <% end %>
+          <% if profile.star_url %>
+            <img class="d-inline-block star-image flex-shrink-0" width="100" height="50" src="<%= profile.star_url %>" alt="Level <%= profile.level %>">
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="text-center ml-4">
+    <% if profile.sr %>
+      <div class="d-flex flex-items-center flex-justify-center">
+        <% if profile.rank_url %>
+          <img class="d-inline-block flex-shrink-0" width="50" height="50" src="<%= profile.rank_url %>" alt="Rank <%= profile.sr %> logo">
+        <% end %>
+        <span class="d-inline-block text-bold"><%= profile.sr %></span>
+      </div>
+    <% end %>
+    <% if profile.competitive_time %>
+      <div><%= profile.competitive_time %> played</div>
+    <% end %>
+    <% if profile.competitive_wins && profile.competitive_games %>
+      <div>
+        <%= number_with_delimiter profile.competitive_wins %> of
+        <%= number_with_delimiter profile.competitive_games %> won
+        &middot;
+        <%= profile.competitive_win_percent %>%
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="mt-4">
+  <span class="mr-2 d-inline-block text-bold">Quickplay:</span>
+  <span>
+    <% if profile.quickplay_time %>
+      <span class="d-inline-block mr-2"><%= profile.quickplay_time %></span>
+    <% end %>
+    <% if profile.quickplay_wins %>
+      <%= number_with_delimiter profile.quickplay_wins %> wins
+    <% end %>
+  </span>
+</div>

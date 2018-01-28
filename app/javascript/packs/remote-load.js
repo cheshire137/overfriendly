@@ -11,6 +11,7 @@ const observer = new SelectorObserver(document, '.js-remote-load', function() {
   const token = tokenMeta.content
   const headers = { 'X-CSRF-TOKEN': token }
   const fetcher = new Fetcher()
+
   fetcher.get(url, headers).then(html => this.innerHTML = html)
 })
 observer.observe()
