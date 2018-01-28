@@ -1,26 +1,21 @@
 {
-    "average": 2804,
+    "average": "1234",
     "players": [
         {
             "battlenetID": "Galaxy#1234",
             "name": "Galaxy",
-            "role": "DPS",
             "sr": 1673
         },
         {
             "battlenetID": "Anachronistic#9876",
-            "name": "Anachronistic",
             "role": "HEALER",
             "sr": 2425
         },
         {
             "battlenetID": "No-bnet-id",
-            "name": "Arcane",
-            "role": "Flex",
-            "sr": 2500
+            "name": "Arcane"
         },
         {
-            "battlenetID": "Bellwhether#8283",
             "name": "BellBall",
             "role": "HEALER",
             "sr": 2700
@@ -32,8 +27,6 @@
             "sr": 3152
         },
         {
-            "battlenetID": "Avarion#3293",
-            "name": "Avarion",
             "role": "FLEX",
             "sr": 4375
         }

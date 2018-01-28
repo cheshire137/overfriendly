@@ -12,8 +12,16 @@ class Api::TeamsController < ApplicationController
       return render json: team.errors, status: :unprocessable_entity
     end
 
-    data['players'].each do |player_data|
+    team_players = data['players'].map do |player_data|
       TeamPlayer.create_from(player_data, team: team)
+    end
+
+    players_saved = team_players.map(&:persisted?)
+
+    unless players_saved.all?
+      team.destroy
+      team_players.map(&:destroy)
+      return head(:unprocessable_entity)
     end
 
     head :created

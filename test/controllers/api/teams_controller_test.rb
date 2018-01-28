@@ -32,7 +32,18 @@ class Api::TeamsControllerTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
-  test 'accepts payload and creates team' do
+  test '422 Unprocessable Entity when payload is invalid' do
+    json = file_fixture('invalid-team-payload.json').read
+    auth = "Token #{@user.battletag} #{@api_token}"
+
+    assert_no_difference ['Team.count', 'TeamPlayer.count'] do
+      post '/api/teams', params: json, headers: { 'HTTP_AUTHORIZATION' => auth }
+    end
+
+    assert_response :unprocessable_entity
+  end
+
+  test 'accepts valid payload and creates team and players' do
     json = file_fixture('valid-team-payload.json').read
     auth = "Token #{@user.battletag} #{@api_token}"
 

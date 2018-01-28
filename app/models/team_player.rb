@@ -14,12 +14,16 @@ class TeamPlayer < ApplicationRecord
 
   def self.create_from(data, team:)
     battletag = data['battlenetID']
-    user = User.find_by_battletag(battletag)
-    role = Hero.normalize_roles(data['role'])
-    team_player_data = { name: data['name'], role: role }
+    user = if battletag.present?
+      User.find_by_battletag(battletag)
+    end
+    team_player_data = { name: data['name'] }
+    if data['role'].present?
+      team_player_data[:role] = Hero.normalize_roles(data['role'])
+    end
     if user
       team_player_data[:user] = user
-    elsif battletag.downcase != 'no-bnet-id'
+    elsif battletag.present? && battletag.downcase != 'no-bnet-id'
       team_player_data[:battletag] = battletag
     end
     team.players.create(team_player_data)
