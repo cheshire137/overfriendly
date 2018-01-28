@@ -52,7 +52,8 @@ class Stats
     heroes[0...3]
   end
 
-  def tldr
+  def tldr_roles
+    return @tldr_roles if @tldr_roles
     roles = top_heroes.map(&:role)
     role_counts = {}
 
@@ -62,6 +63,10 @@ class Stats
     end
 
     role_counts = role_counts.sort_by { |role, count| -count }.to_h
-    role_counts.keys.map { |role| Hero.humanize_role(role) }.join(' / ')
+    @tldr_roles = role_counts.keys.map(&:to_s)
+  end
+
+  def tldr
+    tldr_roles.map { |role| Hero.humanize_role(role) }.join(' / ')
   end
 end

@@ -1,16 +1,18 @@
-<div class="player-summary-header d-flex flex-items-center flex-justify-center mb-2">
-  <% if profile.rank_url %>
-    <img class="d-inline-block flex-shrink-0 mr-2" width="50" height="50" src="<%= profile.rank_url %>" alt="Rank <%= profile.sr %> logo">
-  <% end %>
-  <span class="d-inline-block text-bold">
-    <% if profile.sr %>
-      <%= profile.sr %>
-    <% else %>
-      Unranked
+<div class="js-player-summary" data-roles="<%= stats.tldr_roles.join(',') %>">
+  <div class="player-summary-header d-flex flex-items-center flex-justify-center mb-2">
+    <% if profile.rank_url %>
+      <img class="d-inline-block flex-shrink-0 mr-2" width="50" height="50" src="<%= profile.rank_url %>" alt="Rank <%= profile.sr %> logo">
     <% end %>
-  </span>
-  <span class="d-inline-block ml-2"><%= stats.tldr %></span>
-</div>
+    <span class="d-inline-block text-bold">
+      <% if profile.sr %>
+        <%= profile.sr %>
+      <% else %>
+        Unranked
+      <% end %>
+    </span>
+    <span class="d-inline-block ml-2"><%= stats.tldr %></span>
+  </div>
 
-<%= render partial: 'profile/stats',
-           locals: { stats: stats, limit: 3, hide_tldr: true } %>
+  <%= render partial: 'profile/stats',
+             locals: { stats: stats, limit: 3, hide_tldr: true } %>
+</div>

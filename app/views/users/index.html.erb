@@ -14,7 +14,7 @@
 
 <div class="columns">
   <% @users.each do |user| %>
-    <div class="column one-half js-player-container">
+    <div class="column one-half js-player-container d-none">
       <h3 class="h3 text-center">
         <a href="<%= user_path(user, user.platform, user.region) %>">
           <%= user %>
