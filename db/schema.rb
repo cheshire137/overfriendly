@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128214230) do
+ActiveRecord::Schema.define(version: 20180128215926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,15 @@ ActiveRecord::Schema.define(version: 20180128214230) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "battletag", null: false
+    t.string "battletag", limit: 30, null: false
     t.string "provider", null: false
     t.string "uid", null: false
     t.string "platform", limit: 3
     t.string "region", limit: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "api_token", limit: 20
+    t.index ["api_token", "battletag"], name: "index_users_on_api_token_and_battletag", unique: true
     t.index ["battletag"], name: "index_users_on_battletag", unique: true
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end

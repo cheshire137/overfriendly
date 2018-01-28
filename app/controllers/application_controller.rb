@@ -15,4 +15,7 @@ class ApplicationController < ActionController::Base
       1
     end
   end
+
+  def require_api_user
+  end
 end
