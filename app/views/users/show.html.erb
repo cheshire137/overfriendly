@@ -7,3 +7,12 @@
   <div data-url="<%= profile_path(User.parameterize(@battletag), @platform, @region) %>" class="mr-4 js-remote-load"></div>
   <div data-url="<%= stats_path(User.parameterize(@battletag), @platform, @region) %>" class="js-remote-load"></div>
 </div>
+
+<div class="text-small mt-4 pt-4 border-top">
+  Out of date?
+  <%= form_tag profile_refresh_path, method: :put, class: 'd-inline-block' do %>
+    <button type="submit" class="btn-link text-small">
+      Refresh your profile.
+    </button>
+  <% end %>
+</div>

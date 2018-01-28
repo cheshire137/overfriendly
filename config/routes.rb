@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/profile/:battletag/:platform/:region' => 'profile#show', as: :profile
   get '/summary/:battletag/:platform/:region' => 'profile#summary', as: :summary
   get '/stats/:battletag/:platform/:region' => 'profile#stats', as: :stats
+  put '/profile/refresh' => 'profile#refresh', as: :profile_refresh
 
   get '/users' => 'users#index', as: :users
   get '/user/:battletag/:platform/:region' => 'users#show', as: :user
