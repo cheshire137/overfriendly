@@ -15,6 +15,13 @@ class ProfileController < ApplicationController
     render partial: 'profile/stats', layout: false, locals: { stats: stats }
   end
 
+  def summary
+    profile = get_profile
+    return head(:failed_dependency) unless profile
+
+    render partial: 'profile/summary', layout: false, locals: { profile: profile }
+  end
+
   private
 
   def overwatch_api

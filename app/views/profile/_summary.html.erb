@@ -1,1 +1,10 @@
-<a href="<%= user_path(User.parameterize(battletag), platform, region) %>"><%= battletag %></a>
+<div class="d-flex flex-items-center">
+  <% if profile.sr %>
+    <% if profile.rank_url %>
+      <img class="d-inline-block flex-shrink-0" width="50" height="50" src="<%= profile.rank_url %>" alt="Rank <%= profile.sr %> logo">
+    <% end %>
+    <span class="d-inline-block text-bold"><%= profile.sr %></span>
+  <% else %>
+    <span class="d-inline-block text-bold">Not yet ranked</span>
+  <% end %>
+</div>
