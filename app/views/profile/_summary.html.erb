@@ -8,3 +8,5 @@
     <span class="d-inline-block text-bold">Not yet ranked</span>
   <% end %>
 </div>
+
+<%= render partial: 'profile/stats', locals: { stats: stats, limit: 3 } %>

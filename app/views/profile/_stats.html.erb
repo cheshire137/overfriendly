@@ -1,9 +1,11 @@
+<% limit = local_assigns.key?(:limit) ? local_assigns[:limit] : 5 %>
+
 <% if stats.competitive_heroes.any? %>
   <%= render partial: 'users/heroes_list',
-             locals: { heroes: stats.competitive_heroes,
+             locals: { heroes: stats.competitive_heroes[0...limit],
                        total_seconds: stats.total_competitive_seconds } %>
 <% elsif stats.quickplay_heroes.any? %>
   <%= render partial: 'users/heroes_list',
-             locals: { heroes: stats.quickplay_heroes,
+             locals: { heroes: stats.quickplay_heroes[0...limit],
                        total_seconds: stats.total_quickplay_seconds } %>
 <% end %>
