@@ -5,14 +5,14 @@ class ProfileController < ApplicationController
     profile = get_profile
     return head(:failed_dependency) unless profile
 
-    render partial: 'user/profile', layout: false, locals: { profile: profile }
+    render partial: 'profile/show', layout: false, locals: { profile: profile }
   end
 
   def stats
     stats = get_stats
     return head(:failed_dependency) unless stats
 
-    render partial: 'user/stats', layout: false, locals: { stats: stats }
+    render partial: 'profile/stats', layout: false, locals: { stats: stats }
   end
 
   private

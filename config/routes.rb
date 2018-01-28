@@ -7,11 +7,9 @@ Rails.application.routes.draw do
   get '/profile/:battletag/:platform/:region' => 'profile#show', as: :profile
   get '/stats/:battletag/:platform/:region' => 'profile#stats', as: :stats
 
-  get '/friends/:battletag/:platform/:region' => 'friends#index', as: :friends
-
-  get '/user/:battletag/:platform/:region' => 'user#show', as: :user
-  put '/user' => 'user#update', as: :user_update
-  get '/settings' => 'user#settings', as: :settings
+  get '/user/:battletag/:platform/:region' => 'users#show', as: :user
+  put '/user' => 'users#update', as: :user_update
+  get '/settings' => 'users#settings', as: :settings
 
   root to: 'home#index'
 end

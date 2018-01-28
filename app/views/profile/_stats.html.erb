@@ -1,9 +1,9 @@
 <% if stats.competitive_heroes.any? %>
-  <%= render partial: 'user/heroes_list',
+  <%= render partial: 'users/heroes_list',
              locals: { heroes: stats.competitive_heroes,
                        total_seconds: stats.total_competitive_seconds } %>
 <% elsif stats.quickplay_heroes.any? %>
-  <%= render partial: 'user/heroes_list',
+  <%= render partial: 'users/heroes_list',
              locals: { heroes: stats.quickplay_heroes,
                        total_seconds: stats.total_quickplay_seconds } %>
 <% end %>
