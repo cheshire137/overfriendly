@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_user_complete, only: [:show]
 
   def index
+    @omitted_roles = (params[:omit_role].presence || '').split(',')
     @users = User.order_by_battletag.paginate(page: current_page, per_page: 100)
   end
 

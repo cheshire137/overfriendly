@@ -1,4 +1,6 @@
 class Hero
+  ROLES = %w[dps hitscan flanker healer tank off_tank defense].freeze
+
   attr_reader :name, :playtime, :url
 
   def initialize(data)
@@ -30,10 +32,9 @@ class Hero
   end
 
   def self.humanize_role(role)
-    if role == :dps
-      'DPS'
-    elsif role == :off_tank
-      'Off-tank'
+    case role.to_sym
+    when :dps then 'DPS'
+    when :off_tank then 'Off-tank'
     else
       role.to_s.humanize
     end

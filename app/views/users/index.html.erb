@@ -2,9 +2,19 @@
 
 <%= render partial: 'layouts/nav', locals: { battletag: current_user.battletag } %>
 
+<div class="mb-4 border-bottom pb-4">
+  <span class="text-bold d-inline-block mr-3">Roles:</span>
+  <% Hero::ROLES.each do |role| %>
+    <label class="mr-3">
+      <%= role_filter(role, @omitted_roles) %>
+      <%= Hero.humanize_role(role) %>
+    </label>
+  <% end %>
+</div>
+
 <div class="columns">
   <% @users.each do |user| %>
-    <div class="column one-half">
+    <div class="column one-half js-player-container">
       <h3 class="h3 text-center">
         <a href="<%= user_path(user, user.platform, user.region) %>">
           <%= user %>
