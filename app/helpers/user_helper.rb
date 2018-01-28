@@ -16,4 +16,9 @@ module UserHelper
       valid_options
     end
   end
+
+  def hero_bar_width(seconds, total)
+    percent = (seconds.to_f / total) * 100
+    percent + 2
+  end
 end
