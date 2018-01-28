@@ -35,6 +35,10 @@ class User < ApplicationRecord
     save
   end
 
+  def self.has_api_access?(battletag, token)
+    exists?(battletag: battletag, api_token: token)
+  end
+
   def self.battletag_from_param(str)
     index = str.rindex('-')
     start = str[0...index]

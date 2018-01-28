@@ -3,6 +3,18 @@ class Hero
 
   attr_reader :name, :playtime, :url
 
+  def self.normalize_roles(role_str)
+    roles = role_str.downcase.split('/')
+    roles = roles.map do |role|
+      if role == 'dps'
+        'DPS'
+      else
+        role.humanize
+      end
+    end
+    roles.join('/')
+  end
+
   def initialize(data)
     @name = data['hero']
     @playtime = data['played']

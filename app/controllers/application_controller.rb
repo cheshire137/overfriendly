@@ -17,5 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   def require_api_user
+    return head(:unauthorized) unless request.headers['Authorization'].present?
+
+    type, battletag, token = request.headers['Authorization'].split(' ')
+    return head(:bad_request) unless type.downcase == 'token'
+
+    head(:forbidden) unless User.has_api_access?(battletag, token)
   end
 end

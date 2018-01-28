@@ -1,0 +1,42 @@
+{
+    "average": 2804,
+    "players": [
+        {
+            "battlenetID": "Galaxsea#1199",
+            "name": "Galaxsea",
+            "role": "DPS",
+            "sr": 1673
+        },
+        {
+            "battlenetID": "Anachromy#1216",
+            "name": "Anachromy",
+            "role": "HEALER",
+            "sr": 2425
+        },
+        {
+            "battlenetID": "No-bnet-id",
+            "name": "Arkayn",
+            "role": "Flex",
+            "sr": 2500
+        },
+        {
+            "battlenetID": "Bellwether#1741",
+            "name": "Bellbell",
+            "role": "HEALER",
+            "sr": 2700
+        },
+        {
+            "battlenetID": "Caleb#1905",
+            "name": "CalebV",
+            "role": "DPS/Flex",
+            "sr": 3152
+        },
+        {
+            "battlenetID": "Aravion#1679",
+            "name": "Aravion",
+            "role": "FLEX",
+            "sr": 4375
+        }
+    ],
+    "team": "Slytherin"
+}
