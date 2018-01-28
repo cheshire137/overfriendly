@@ -2,7 +2,11 @@ class Api::TeamsController < ApplicationController
   before_action :require_api_user
 
   def create
-    data = JSON.parse(request.body.read)
+    data = begin
+      JSON.parse(request.body.read)
+    rescue
+      return head(:not_acceptable)
+    end
     return head(:not_acceptable) unless data['players'].present?
 
     name = data['team'].presence || "Team #{Team.count + 1}"
