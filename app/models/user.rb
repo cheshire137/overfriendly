@@ -26,9 +26,6 @@ class User < ApplicationRecord
   validates :platform, inclusion: { in: VALID_PLATFORMS.keys }, presence: true
   validates :region, inclusion: { in: VALID_REGIONS.keys }, presence: true
 
-  has_and_belongs_to_many :friends, class_name: 'User', join_table: 'friends',
-    foreign_key: 'user1_id', association_foreign_key: 'user2_id'
-
   has_many :team_players
   has_many :teams, through: :team_players
 
