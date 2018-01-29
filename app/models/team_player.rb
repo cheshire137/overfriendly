@@ -29,6 +29,16 @@ class TeamPlayer < ApplicationRecord
     team.players.create(team_player_data)
   end
 
+  def to_s
+    if user
+      user
+    elsif name.present?
+      name
+    else
+      battletag
+    end
+  end
+
   private
 
   def user_or_battletag_or_name_present
