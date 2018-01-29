@@ -1,7 +1,9 @@
 <h1 class="h1 mb-4">Overfriendly / <%= @battletag %></h1>
 
-<%= render partial: 'layouts/nav',
-           locals: { battletag: @battletag, region: @region, platform: @platform } %>
+<% if signed_in? %>
+  <%= render partial: 'layouts/nav',
+             locals: { battletag: @battletag, region: @region, platform: @platform } %>
+<% end %>
 
 <div class="d-flex flex-items-center">
   <div data-url="<%= profile_path(User.parameterize(@battletag), @platform, @region) %>" class="mr-4 js-remote-load"></div>
@@ -25,11 +27,13 @@
   </div>
 <% end %>
 
-<div class="text-small mt-4 pt-4 border-top">
-  Out of date?
-  <%= form_tag profile_refresh_path, method: :put, class: 'd-inline-block' do %>
-    <button type="submit" class="btn-link text-small">
-      Refresh your profile.
-    </button>
-  <% end %>
-</div>
+<% if signed_in? && @battletag == current_user.battletag %>
+  <div class="text-small mt-4 pt-4 border-top">
+    Out of date?
+    <%= form_tag profile_refresh_path, method: :put, class: 'd-inline-block' do %>
+      <button type="submit" class="btn-link text-small">
+        Refresh your profile.
+      </button>
+    <% end %>
+  </div>
+<% end %>
