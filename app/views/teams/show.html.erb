@@ -1,16 +1,20 @@
 <h1 class="h1 mb-4">Overfriendly / Team <%= @team %></h1>
 
 <%= render partial: 'layouts/nav',
-           locals: { battletag: current_user.battletag } %>
+           locals: { battletag: current_user.battletag, team: @team } %>
 
-<ul class="list-style-none">
+<div class="columns">
   <% @players.each do |team_player| %>
-    <li>
-      <span class="text-bold"><%= team_player %></span>
-      as <%= team_player.role %>
+    <div class="column one-half">
+      <h3 class="h3 text-center">
+        <%= team_player %>
+        <span class="text-gray h4">as <%= team_player.role %></span>
+      </h3>
       <% if user = team_player.user %>
         <div data-url="<%= summary_path(User.parameterize(user.battletag), user.platform, user.region) %>" class="js-remote-load player-summary border rounded-2 mt-2 mb-4 p-3"></div>
+      <% else %>
+        <div class="player-summary border rounded-2 mt-2 mb-4 p-3 blankslate"></div>
       <% end %>
-    </li>
+    </div>
   <% end %>
-</ul>
+</div>

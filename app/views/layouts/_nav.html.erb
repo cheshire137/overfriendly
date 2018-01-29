@@ -1,5 +1,12 @@
+<% team = local_assigns.key?(:team) ? local_assigns[:team] : nil %>
+
 <div class="tabnav">
   <nav class="tabnav-tabs">
+    <% if team %>
+      <a href="<%= team_path(team) %>" class="tabnav-tab <%= "selected" if team_tab_active? %>">
+        View team
+      </a>
+    <% end %>
     <% unless battletag == current_user.battletag %>
       <a href="<%= user_path(User.parameterize(battletag), platform, region) %>" class="tabnav-tab <%= "selected" if profile_tab_active? %>">
         View profile

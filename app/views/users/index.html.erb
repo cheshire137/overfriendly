@@ -20,7 +20,7 @@
           <%= user %>
         </a>
       </h3>
-      <div data-url="<%= summary_path(User.parameterize(user.battletag), user.platform, user.region) %>" class="js-remote-load player-summary border rounded-2 mt-2 mb-4 p-3"></div>
+      <div data-url="<%= summary_path(User.parameterize(user.battletag), user.platform, user.region, filterable: true) %>" class="js-remote-load player-summary border rounded-2 mt-2 mb-4 p-3"></div>
     </div>
   <% end %>
 </div>

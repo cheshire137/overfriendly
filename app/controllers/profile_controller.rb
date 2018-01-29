@@ -23,7 +23,8 @@ class ProfileController < ApplicationController
     return head(:failed_dependency) unless stats
 
     render partial: 'profile/summary', layout: false,
-           locals: { profile: profile, stats: stats }
+           locals: { profile: profile, stats: stats,
+                     filterable: params[:filterable].present? }
   end
 
   def refresh
