@@ -5,6 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user.battletag = auth.info.battletag
 
     if user.save
+      user.link_team_players
       sign_in_and_redirect(user, event: :authentication)
     else
       redirect_to root_path, alert: 'Failed to sign in via Battle.net.'

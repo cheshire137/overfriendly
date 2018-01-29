@@ -36,6 +36,10 @@ class User < ApplicationRecord
 
   scope :order_by_battletag, ->{ order("LOWER(battletag)") }
 
+  def link_team_players
+    TeamPlayer.where(battletag: battletag, user_id: nil).update_all(user_id: id)
+  end
+
   def grant_api_access
     self.api_token = Devise.friendly_token[0,20]
     save
