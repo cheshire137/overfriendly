@@ -1,5 +1,10 @@
 # Overfriendly
 
+## How to Authenticate with the API
+
+The routes under `/api` require `Content-type: application/json` as a header as well as `HTTP_AUTHORIZATION`. You must have signed into the app via Battle.net and an admin must grant you API access via User#grant_api_access. You need the `api_token` value from your record in the users table. Then the authorization header takes the format: `Token YOUR_BATTLETAG YOUR_API_TOKEN`,
+e.g., `Token cheshire#1234 nafjk3n2dkslmio`.
+
 ## How to Develop
 
 [Create a Battle.net API app](https://dev.battle.net), `cp dotenv.sample .env`, and
