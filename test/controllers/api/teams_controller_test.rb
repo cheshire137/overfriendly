@@ -54,5 +54,9 @@ class Api::TeamsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :created
+
+    json = JSON.parse(response.body)
+    assert_equal 'Slytherin', json['team']['name']
+    assert_equal 'http://www.example.com/team/slytherin', json['team']['url']
   end
 end
