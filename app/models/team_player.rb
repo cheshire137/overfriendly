@@ -39,6 +39,22 @@ class TeamPlayer < ApplicationRecord
     end
   end
 
+  def region
+    if user
+      user.region
+    else
+      User::DEFAULT_REGION
+    end
+  end
+
+  def platform
+    if user
+      user.platform
+    else
+      User::DEFAULT_PLATFORM
+    end
+  end
+
   private
 
   def user_or_battletag_or_name_present
