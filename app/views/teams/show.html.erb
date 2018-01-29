@@ -5,8 +5,10 @@
   <% end %>
 </h1>
 
-<%= render partial: 'layouts/nav',
-           locals: { battletag: current_user.battletag, team: @team } %>
+<% if signed_in? %>
+  <%= render partial: 'layouts/nav',
+             locals: { battletag: current_user.battletag, team: @team } %>
+<% end %>
 
 <div class="columns">
   <% @players.each do |team_player| %>
