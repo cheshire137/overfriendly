@@ -13,12 +13,18 @@ class User < ApplicationRecord
     'global' => 'Global'
   }.freeze
 
+  DEFAULT_PLATFORM = 'pc'.freeze
+  DEFAULT_REGION = 'us'.freeze
+
   devise :omniauthable, omniauth_providers: [:bnet]
+
+  before_validation :set_region
+  before_validation :set_platform
 
   validates :battletag, uniqueness: true
   validates :provider, uniqueness: { scope: :uid }
-  validates :platform, inclusion: { in: VALID_PLATFORMS.keys }, allow_nil: true
-  validates :region, inclusion: { in: VALID_REGIONS.keys }, allow_nil: true
+  validates :platform, inclusion: { in: VALID_PLATFORMS.keys }, presence: true
+  validates :region, inclusion: { in: VALID_REGIONS.keys }, presence: true
 
   has_and_belongs_to_many :friends, class_name: 'User', join_table: 'friends',
     foreign_key: 'user1_id', association_foreign_key: 'user2_id'
@@ -60,5 +66,15 @@ class User < ApplicationRecord
 
   def to_param
     self.class.parameterize(battletag)
+  end
+
+  private
+
+  def set_region
+    self.region ||= DEFAULT_REGION
+  end
+
+  def set_platform
+    self.platform ||= DEFAULT_PLATFORM
   end
 end
