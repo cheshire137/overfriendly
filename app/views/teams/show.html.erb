@@ -1,7 +1,14 @@
-<h1 class="h1 mb-4">
-  Overfriendly / Team <%= @team %>
-  <% if @team.average_sr %>
-    <span class="h2 text-gray text-normal">Average SR <%= @team.average_sr %></span>
+<h1 class="h1 mb-4 d-flex flex-justify-between flex-items-center">
+  <span>
+    Overfriendly / Team <%= @team %>
+    <% if @team.average_sr %>
+      <span class="h2 text-gray text-normal">Average SR <%= @team.average_sr %></span>
+    <% end %>
+  </span>
+  <% unless signed_in? %>
+    <a class="h6 text-normal" href="<%= user_bnet_omniauth_authorize_path %>">
+      Sign in with Battle.net
+    </a>
   <% end %>
 </h1>
 
