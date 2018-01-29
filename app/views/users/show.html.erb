@@ -8,6 +8,23 @@
   <div data-url="<%= stats_path(User.parameterize(@battletag), @platform, @region) %>" class="js-remote-load"></div>
 </div>
 
+<% if @teams.any? %>
+  <div class="mt-4 pt-4 border-top">
+    <h2 class="h2">Past teams</h2>
+    <ul class="list-style-none">
+      <% @teams.each do |team| %>
+        <li>
+          <a href="<%= team_path(team) %>"><%= team %></a>
+          <span class="text-gray text-small" title="<%= team.created_at %>">
+            <%= time_ago_in_words team.created_at %> ago
+          </span>
+        </li>
+      <% end %>
+    </ul>
+    <%= will_paginate @teams %>
+  </div>
+<% end %>
+
 <div class="text-small mt-4 pt-4 border-top">
   Out of date?
   <%= form_tag profile_refresh_path, method: :put, class: 'd-inline-block' do %>

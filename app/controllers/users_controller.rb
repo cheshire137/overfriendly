@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @battletag = User.battletag_from_param(params[:battletag])
     @platform = params[:platform]
     @region = params[:region]
+    @user = User.where(battletag: @battletag, platform: @platform, region: @region).first
+    @teams = if @user
+      @user.teams.order('id DESC').paginate(page: current_page, per_page: 5)
+    end
   end
 
   def settings
